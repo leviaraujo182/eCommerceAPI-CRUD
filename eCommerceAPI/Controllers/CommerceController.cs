@@ -37,11 +37,22 @@ namespace eCommerceAPI.Controllers
         [HttpGet]
         public List<Product> GetAllProducts()
         {
-            return null;
+            List<Product> products = new List<Product>();
+
+            try
+            {
+                products = _repository.GetAllProduct();
+            } 
+            catch(Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
+            return products;
         }
 
         [Route("InsertProduct")]
-        [HttpGet]
+        [HttpPost]
         public void InsertProduct(Product product)
         {
             try 

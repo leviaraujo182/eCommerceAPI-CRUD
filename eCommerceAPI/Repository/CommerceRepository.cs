@@ -1,5 +1,6 @@
 ﻿using eCommerceAPI.Models;
 using System;
+using System.Collections.Generic;
 using System.Data.Common;
 using System.Data.SqlClient;
 
@@ -65,6 +66,34 @@ namespace eCommerceAPI.Repository
                 _connection.Close();
                 throw new Exception(ex.Message);
             }
+        }
+
+        public List<Product> GetAllProduct()
+        {
+            List<Product> products = new List<Product>();
+
+            try
+            {
+                SqlCommand sqlCommand = new SqlCommand();
+                sqlCommand.CommandText = "SELECT * FROM Product";
+                sqlCommand.Connection = (SqlConnection)_connection;
+
+                _connection.Open();
+
+                SqlDataReader dataReader = sqlCommand.ExecuteReader();
+
+                while (dataReader.Read())
+                {
+                    products.Add( new Product() { NameProduct = Convert.ToString(dataReader["NameProduct"]), Quantity = Convert.ToInt32(dataReader["Quantity"]), Value = Convert.ToDecimal(dataReader["Value"])});
+                }
+            } 
+            catch(Exception ex)
+            {
+                _connection.Close();
+                throw new Exception(ex.Message);
+            }
+
+            return products;
         }
     }
 }
