@@ -101,5 +101,27 @@ namespace eCommerceAPI.Repository
 
             return products;
         }
+
+        public void DeleteProduct(long id)
+        {
+            try
+            {
+                SqlCommand command = new SqlCommand();
+                command.CommandText = "DELETE FROM Product WHERE Id = @Id";
+                command.Parameters.AddWithValue("@id", id);
+                command.Connection = (SqlConnection)_connection;
+
+                _connection.Open();
+
+                command.ExecuteNonQuery();
+
+            }
+            catch(Exception ex)
+            {
+                _connection.Close();
+
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

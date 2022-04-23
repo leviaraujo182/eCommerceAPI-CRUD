@@ -64,5 +64,24 @@ namespace eCommerceAPI.Controllers
                 throw new Exception(ex.Message);
             }
         }
+
+        [Route("DeleteProduct")]
+        [HttpDelete]
+        public object DeleteProduct(long productId)
+        {
+            try
+            {
+                _repository.DeleteProduct(productId);
+            }
+            catch(Exception ex)
+            {
+
+                return new { Success = "false", Message = "Não foi possivel deletar o produto" };
+
+                throw new Exception(ex.Message);
+            }
+
+            return new { Success = "true", Message = "Produto deletado com sucesso!" };
+        }
     }
 }
