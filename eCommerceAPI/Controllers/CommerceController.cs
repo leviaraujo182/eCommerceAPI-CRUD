@@ -17,7 +17,7 @@ namespace eCommerceAPI.Controllers
 
         [Route("GetProduct")]
         [HttpGet]
-        public Product GetProduct(long id)
+        public Product GetProductById(long id)
         {
             Product product = new Product();
 
@@ -73,12 +73,10 @@ namespace eCommerceAPI.Controllers
             {
                 _repository.DeleteProduct(productId);
             }
-            catch(Exception ex)
+            catch
             {
 
                 return new { Success = "false", Message = "Não foi possivel deletar o produto" };
-
-                throw new Exception(ex.Message);
             }
 
             return new { Success = "true", Message = "Produto deletado com sucesso!" };

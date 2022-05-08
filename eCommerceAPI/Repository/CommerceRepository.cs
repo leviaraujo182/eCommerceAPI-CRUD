@@ -32,6 +32,7 @@ namespace eCommerceAPI.Repository
 
                 while (dataReader.Read())
                 {
+                    product.Id = Convert.ToInt32(dataReader["Id"]);
                     product.NameProduct = Convert.ToString(dataReader["NameProduct"]);
                     product.Quantity = Convert.ToInt32(dataReader["Quantity"]);
                     product.Value = Convert.ToDecimal(dataReader["Value"]);
@@ -87,6 +88,7 @@ namespace eCommerceAPI.Repository
                     products.Add(
                         new Product()
                         {
+                            Id = Convert.ToInt32(dataReader["id"]),
                             NameProduct = Convert.ToString(dataReader["NameProduct"]),
                             Quantity = Convert.ToInt32(dataReader["Quantity"]),
                             Value = Convert.ToDecimal(dataReader["Value"])
@@ -96,6 +98,7 @@ namespace eCommerceAPI.Repository
             catch (Exception ex)
             {
                 _connection.Close();
+
                 throw new Exception(ex.Message);
             }
 
