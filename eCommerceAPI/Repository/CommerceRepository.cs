@@ -126,5 +126,28 @@ namespace eCommerceAPI.Repository
                 throw new Exception(ex.Message);
             }
         }
+
+        public void UpdateProduct(Product product)
+        {
+            try
+            {
+                SqlCommand sqlCommand = new SqlCommand();
+
+                sqlCommand.CommandText = "UPDATE Product SET NameProduct = @NameProduct, Quantity = @Quantity, Value = @Value WHERE Id = @Id";
+                sqlCommand.Parameters.AddWithValue("@NameProduct", product.NameProduct);
+                sqlCommand.Parameters.AddWithValue("@Quantity", product.Quantity);
+                sqlCommand.Parameters.AddWithValue("@Value", product.Value);
+                sqlCommand.Parameters.AddWithValue("@Id", product.Id);
+                sqlCommand.Connection = (SqlConnection)_connection;
+
+                _connection.Open();
+
+                sqlCommand.ExecuteNonQuery();
+            } 
+            catch(Exception ex)
+            {
+                _connection.Close();
+            }
+        }
     }
 }

@@ -15,7 +15,7 @@ namespace eCommerceAPI.Controllers
             _repository = new CommerceRepository();
         }
 
-        [Route("GetProduct")]
+        [Route("GetProductById")]
         [HttpGet]
         public Product GetProductById(long id)
         {
@@ -80,6 +80,22 @@ namespace eCommerceAPI.Controllers
             }
 
             return new { Success = "true", Message = "Produto deletado com sucesso!" };
+        }
+
+        [Route("UpdateProduct")]
+        [HttpPut]
+        public object UpdateProduct(Product product)
+        {
+            try
+            {
+                _repository.UpdateProduct(product);
+            } 
+            catch
+            {
+                return new { success = "false", message = "Não foi possivel atualizar o produto" };
+            }
+
+            return new { success = "true", message = "Produto atualizado com sucesso!" };
         }
     }
 }
