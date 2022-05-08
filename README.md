@@ -15,24 +15,15 @@
 # :hammer_and_pick: Tecnologias utilizadas 
 - [SwaggerUI](https://swagger.io/)
 - [.NET](https://dotnet.microsoft.com/en-us/)
+- [ASP.NET](https://dotnet.microsoft.com/en-us/apps/aspnet)
 
 # :warning: Pré-Requisitos
-Antes de rodar o projeto, é necessário que você tenha instalado na sua máquina o [NodeJS](https://nodejs.org/en/) e o [Git](https://git-scm.com/downloads). Para a melhor visualização dos códigos, é recomendável a utilização do [Visual Studio Code](https://code.visualstudio.com/).
+Para que seja possível rodar o projeto na sua máquina, será necessário que você tenha [Visual Studio](https://visualstudio.microsoft.com/pt-br/downloads/) instalado na sua máquina, juntamente com o [.NET 5.0](https://dotnet.microsoft.com/en-us/download/dotnet/5.0v).
 
 # :gear: Rodando o projeto
-Para o rodar o projeto, siga os passos a baixo
+Para rodar o projeto, basta clonar o repositório com o comando a baixo, rodar e ser feliz :D
 
-1 - Clonar o repositório
 ```
-git clone https://github.com/leviaraujo182/beach-login
-```
-
-2 - Instalar as dependências
-```
-npm install
+git clone https://github.com/leviaraujo182/eCommerceAPI-CRUD.git
 ```
 
-3 - Rodar o projeto
-```
-npm start
-```
